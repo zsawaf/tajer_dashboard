@@ -39,6 +39,8 @@
 	
 	<!-- Javascript code here-->
 	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/cookies/jquery.cookie.js"></script>
+	
 	<script>
 		// When page loads, hide alert box
 		$(document).ready(function() {
@@ -73,6 +75,7 @@
 					// get the response token
 					var cookie = response["session_token"];
 					// store cookie.
+					$.cookie('tajer_token', cookie);
 					
 					// redirect to login page.
 				},
