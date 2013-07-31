@@ -4,8 +4,10 @@
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>Tajer | Dasboard - Welcome</title>
-
+	<title>SimpliQ - Flat & Responsive Bootstrap Admin Template</title>
+	<meta name="description" content="SimpliQ - Flat & Responsive Bootstrap Admin Template.">
+	<meta name="author" content="Łukasz Holeczek">
+	<meta name="keyword" content="SimpliQ, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<!-- end: Meta -->
 	
 	<!-- start: Mobile Specific -->
@@ -156,13 +158,12 @@
 			</div>
 			<div class="modal-body">
 				<!-- Payment Form here-->
-				<div class="alert alert-error"></div>
 				<form class="form-horizontal">
 				  <fieldset>
 					<div class="control-group">
 					  <label class="control-label" for="amount">Amount </label>
 					  <div class="controls">
-						<input type="text" class="span3" id="amount">
+						<input type="text" class="span4" id="amount">
 						<p class="help-block">Please enter payment amount.</p>
 					  </div>
 					</div>
@@ -170,27 +171,35 @@
 					<div class="control-group">
 					  <label class="control-label" for="currency">Currency </label>
 					  <div class="controls">
-						<input type="text" class="span3" id="currency">
+						<input type="text" class="span4" id="currency">
 						<p class="help-block">Please Enter 3 Letter ISO Code representing currency.</p>
 					  </div>
 					</div>
 					<div class="control-group">
-					  <label class="control-label" for="card">Card Number </label>
+					  <label class="control-label" for="date01">Date input</label>
 					  <div class="controls">
-						<input type="text" class="span3" id="currency">
-						<p class="help-block">Please enter credit card number.</p>
+						<input type="text" class="input-xlarge datepicker" id="date01" value="02/16/12">
 					  </div>
 					</div>
 
+					<div class="control-group">
+					  <label class="control-label" for="fileInput">File input</label>
+					  <div class="controls">
+						<input class="input-file uniform_on" id="fileInput" type="file">
+					  </div>
+					</div>          
 					<div class="form-actions">
-					  <button onclick="createPayment()" class="btn btn-primary">Create Payment</button>
-					  <button data-dismiss="modal" class="btn">Close</button>
+					  <button type="submit" class="btn btn-primary">Save changes</button>
+					  <button type="reset" class="btn">Cancel</button>
 					</div>
 				  </fieldset>
 				</form>   
 				
 			</div>
-
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Close</a>
+				<a href="#" class="btn btn-primary">Create Payment</a>
+			</div>
 		</div>
 		
 		<div class="clearfix"></div>
