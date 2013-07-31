@@ -60,8 +60,7 @@
 			var verPassword = $("#ver_password").val();
 			
 			if (password == verPassword){
-				alert("password match");
-				var cred = '{"email":'+email+', "password":'+password+'}';
+				var cred = {"email":email, "password":password};
 
 				// perform an ajax request.
 				$.ajax({
