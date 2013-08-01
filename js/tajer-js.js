@@ -19,8 +19,11 @@ $(document).ready(function() {
 		// first part is error checking.
 		var amount = $("#amount").val();
 		var cur = $("#currency").val();
-		var card = $("#card").val();
-
+		var number = $("#cardNumber").val();
+		var exp_month = $("#month").val();
+		var exp_year = $("#year").val();
+		var cvv = $("#cvv").val();
+		
 		// error check amount
 		// should not be negative
 		if (amount < 0) {
@@ -40,7 +43,7 @@ $(document).ready(function() {
 
 		// send data to server.
 
-		var payment = {"amount": amount, "currency": cur, "card":card};
+		var payment = {"amount": amount, "currency": cur, "card":{"number": number, "exp_month": exp_month, "exp_year": exp_year, "cvv": cvv}};
 		$.ajax({
 			url: "http://api.lvh.me:3000/v1/payments",
 			data: payment,
@@ -48,9 +51,9 @@ $(document).ready(function() {
 			xhrFields: {
 				withCredentials: true
 				},
-		    beforeSend: function(xhr) {
-		    	xhr.setRequestHeader("Authorization", "Basic " + token);
-		  	},
+		    headers : {
+		        "Authorization" : "Basic "+token
+		     },
 			success: function(response){
 		        console.log(response);
 				alert("payment successful");
