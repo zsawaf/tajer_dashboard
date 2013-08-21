@@ -11,6 +11,15 @@ $(document).ready(function() {
 	var payments;
 	
 	/*
+	* SET UP AJAX CSRF TOKENS
+	*/
+	$.ajaxSetup({
+	    beforeSend: function(xhr) {
+			xhr.setRequestHeader('X-CSRF-TOKEN', token);
+        }
+	});
+	
+	/*
 	* ------------------------------------------------------------
 	* ------------- CREATE PAYMENTS ------------------------------
 	* ------------------------------------------------------------
@@ -50,10 +59,7 @@ $(document).ready(function() {
 			type: "POST",
 			xhrFields: {
 				withCredentials: true
-				},
-		    headers : {
-		        "Authorization" : "Basic "+token
-		     },
+			},
 			success: function(response){
 		        console.log(response);
 				alert("payment successful");
