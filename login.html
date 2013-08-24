@@ -82,7 +82,7 @@
 			        console.log(response);
 					
 					// get the response token
-					var cookie = response["session_token"];
+					var cookie = response["authentication_token"];
 					// store cookie.
 					$.cookie('tajer_token', cookie);
 					
