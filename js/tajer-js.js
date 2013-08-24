@@ -15,7 +15,7 @@ $(document).ready(function() {
 	*/
 	$.ajaxSetup({
 	    beforeSend: function(xhr) {
-			xhr.setRequestHeader('X-CSRF-TOKEN', token);
+			xhr.setRequestHeader('Authorization', token);
         }
 	});
 	
