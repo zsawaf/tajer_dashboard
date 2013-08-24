@@ -7,6 +7,8 @@ $(document).ready(function() {
 	// retrieve session token.
 	var token = $.cookie("tajer_token");
 	
+	alert(token);
+	
 	// initialize variables to store information.
 	var payments;
 	
@@ -15,7 +17,7 @@ $(document).ready(function() {
 	*/
 	$.ajaxSetup({
 	    beforeSend: function(xhr) {
-			xhr.setRequestHeader('Authorization', token);
+			xhr.setRequestHeader('Authorization', "Basic " + token);
         }
 	});
 	
