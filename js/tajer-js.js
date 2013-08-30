@@ -74,28 +74,26 @@ $(document).ready(function() {
 		});
 	});
 	
-	// Get basic user information from server.
-	/*
 	$.ajax({
-		url: "http://api.lvh.me:3000/v1/accounts/login",
-		data: cred,
-		type: "POST",
+		url: "http://api.lvh.me:3000/v1/payments",
+		type: "GET",
 		xhrFields: {
 			withCredentials: true
-			},
-	    beforeSend: function(xhr) {
-	    	xhr.setRequestHeader("Authorization", "Basic " + token);
-	  	},
+		},
 		success: function(response){
-	        console.log(response);
-			payments = response;
+	        alert(response);
 		},
 		error: function(message){
-			alert("retrieving customers failed.");
+			var parsedResponse = $.parseJSON(message.responseText);
+			alert(parsedResponse.error.message);
 		}
 	});
-	*/
+	
+	$('tbody', '#viewPayments').html(
+		'<tr><td>Ajith Hristijan</td><td class="center">2012/03/01</td><td class="center">Member</td><td class="center"><span class="label label-warning">Pending</span></td><td class="center"><a class="btn btn-success" href="#"><i class="icon-zoom-in "></i></a><a class="btn btn-info" href="#"><i class="icon-edit "></i></a><a class="btn btn-danger" href="#"><i class="icon-trash "></i></a></td></tr>'
+	);
 });
+
 
 /* Logout user */
 function logout(){
