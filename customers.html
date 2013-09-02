@@ -121,46 +121,44 @@
 						
 			<!-- start: Content -->
 			<div id="content" class="span10">
-			
-			
-			<!-- Create Payments-->
+
+
+			<!-- Create Customers-->
 			<div class="row-fluid">		
 				<div class="box span12">
 					<div class="box-header" data-original-title>
-						<h2><i class="icon-credit-card"></i><span class="break"></span>Create Payments</h2>
+						<h2><i class="icon-credit-card"></i><span class="break"></span>Create Customers</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
 						</div>
 					</div>
 					<div class="box-content">
-						<h2>You can create payments here</h2>
+						<h2>You can create customers here</h2>
 						<br>
 						<br>
-						<a href="#" class="btn btn-info btn-setting">Create Payment</a>
+						<a href="#" class="btn btn-info btn-setting">Create Customer</a>
 					</div>
 				</div><!--/span-->
 			</div>
-			
-			
+
+
 			<!-- View payments-->
 			<div class="row-fluid">		
 				<div class="box span12">
 					<div class="box-header" data-original-title>
-						<h2><i class="icon-credit-card"></i><span class="break"></span>View Payments</h2>
+						<h2><i class="icon-credit-card"></i><span class="break"></span>View Customers</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
 						</div>
 					</div>
 					<div class="box-content">
-						<table class="table table-striped table-bordered bootstrap-datatable datatable" id="viewPayments">
+						<table class="table table-striped table-bordered bootstrap-datatable datatable" id="viewCustomer">
 						  <thead>
 							  <tr>
-								  <th>Payment ID</th>
-								  <th>Amount</th>
-								  <th>Currency</th>
-								  <th>Date of Payment</th>
-								  <th>Paid</th>
+								  <th>Email</th>
+								  <th>Name</th>
+								  <th>Description</th>
 							  </tr>
 						  </thead>   
 						  <tbody>
@@ -169,96 +167,102 @@
 					</div>
 				</div><!--/span-->
 			<!-- end: Content -->
-				
-		</div><!--/fluid-row-->
-				
-			<div class="modal hide fade" id="myModal">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Create Payment</h3>
-			</div>
-			<div class="modal-body">
-				<!-- Payment Form here-->
-				<div class="alert"></div>
-				  <fieldset>
-					<div class="control-group">
-					  <label class="control-label" for="amount">Amount </label>
-					  <div class="controls">
-						<input type="text" class="span3" id="amount">
-					  </div>
-					</div>
 
-					<div class="control-group">
-					  <label class="control-label" for="currency">Currency </label>
-					  <div class="controls">
-						<input type="text" class="span3" id="currency">
-						<p class="help-block">Please Enter 3 Letter ISO Code representing currency.</p>
-					  </div>
-					</div>
-					<br>
-					<div class="control-group">
-					  <label class="control-label" for="card">Card Number </label>
-					  <div class="controls">
-						<input type="text" class="span3" id="cardNumber">
-					  </div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="selectError20">Expiration Date </label>
-						<div class="controls">
-							<select data-placeholder="Month" id="month" data-rel="chosen">
-								<option value=""></option>
-								<optgroup label="Month">
-								  	<option>01</option>
-								  	<option>02</option>
-								  	<option>03</option>
-								  	<option>04</option>
-									<option>05</option>
-									<option>06</option>
-									<option>07</option>
-									<option>08</option>
-									<option>09</option>
-									<option>10</option>
-									<option>11</option>
-									<option>12</option>
-								</optgroup>
-							</select>	
-							<select data-placeholder="Year" id="year" data-rel="chosen">
-								<option value=""></option>
-								<optgroup label="Year">
-								  	<option>2013</option>
-								  	<option>2014</option>
-								  	<option>2015</option>
-								  	<option>2016</option>
-									<option>2017</option>
-									<option>2018</option>
-									<option>2019</option>
-									<option>2020</option>
-									<option>2021</option>
-									<option>2022</option>
-									<option>2023</option>
-								</optgroup>
-						</select>
+			</div><!--/fluid-row-->
+
+				<div class="modal hide fade" id="myModal">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<h3>Create Customer</h3>
+				</div>
+				<div class="modal-body">
+					<!-- Payment Form here-->
+					<div class="alert"></div>
+					  <fieldset>
+						<div class="control-group">
+						  <label class="control-label" for="amount">Name </label>
+						  <div class="controls">
+							<input type="text" class="span3" id="name">
+						  </div>
 						</div>
-					</div>
-					<br>
-					<div class="control-group">
-					  <label class="control-label" for="card">CVV </label>
-					  <div class="controls">
-						<input type="text" class="span3" id="cvv">
-						<p class="help-block">Please enter 3 digit security number at the back of the card.</p>
-					  </div>
-					</div>
-					<div class="form-actions">
-						<a class="btn" data-dismiss="modal">Close</a>
-						<a id="paymentSubmit" class="btn btn-primary">Complete Payment</a>
-					</div>
-				  </fieldset>				
+
+						<div class="control-group">
+						  <label class="control-label" for="currency">Email </label>
+						  <div class="controls">
+							<input type="text" class="span3" id="email">
+						  </div>
+						</div>
+						<div class="control-group">
+						  <label class="control-label" for="amount">Description </label>
+						  <div class="controls">
+							<input type="text" class="span3" id="desc">
+						  </div>
+						</div>
+						<br>
+						<div class="control-group">
+						  <label class="control-label" for="card">Card Number </label>
+						  <div class="controls">
+							<input type="text" class="span3" id="cardNo">
+						  </div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="selectError20">Expiration Date </label>
+							<div class="controls">
+								<select data-placeholder="Month" id="m" data-rel="chosen">
+									<option value=""></option>
+									<optgroup label="Month">
+									  	<option>01</option>
+									  	<option>02</option>
+									  	<option>03</option>
+									  	<option>04</option>
+										<option>05</option>
+										<option>06</option>
+										<option>07</option>
+										<option>08</option>
+										<option>09</option>
+										<option>10</option>
+										<option>11</option>
+										<option>12</option>
+									</optgroup>
+								</select>	
+								<select data-placeholder="Year" id="y" data-rel="chosen">
+									<option value=""></option>
+									<optgroup label="Year">
+									  	<option>2013</option>
+									  	<option>2014</option>
+									  	<option>2015</option>
+									  	<option>2016</option>
+										<option>2017</option>
+										<option>2018</option>
+										<option>2019</option>
+										<option>2020</option>
+										<option>2021</option>
+										<option>2022</option>
+										<option>2023</option>
+									</optgroup>
+							</select>
+							</div>
+						</div>
+						<br>
+						<div class="control-group">
+						  <label class="control-label" for="card">CVV </label>
+						  <div class="controls">
+							<input type="text" class="span3" id="c">
+							<p class="help-block">Please enter 3 digit security number at the back of the card.</p>
+						  </div>
+						</div>
+						<div class="form-actions">
+							<a class="btn" data-dismiss="modal">Close</a>
+							<a id="customerSubmit" class="btn btn-primary">Save Customer</a>
+						</div>
+					  </fieldset>				
+				</div>
 			</div>
-		</div>
+			
 		
-		<div class="clearfix"></div>
+			<div class="clearfix"></div>
 		
-		<footer>
+			<footer>
 			<p>
 				<span style="text-align:left;float:left">&copy; 2013 <a href="http://bootstrapmaster.com" alt="Bootstrap Themes">Tajer</a></span>
 			</p>

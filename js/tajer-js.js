@@ -119,6 +119,40 @@ $(document).ready(function() {
 		);
 		counter++;
 	}
+	
+	/*
+	* ------------------------------------------------------------
+	* ------------- Customer Page---------------------------------
+	* ------------------------------------------------------------
+	*/
+	var allCustomers;
+	// View customers
+	$.ajax({
+		async: false,
+		url: "http://api.lvh.me:3000/v1/customers",
+		type: "GET",
+		xhrFields: {
+			withCredentials: true
+		},
+		success: function(response){
+			allCustomers = response;
+		},
+		error: function(message){
+			var parsedResponse = $.parseJSON(message);
+	        alert(response);
+		},
+		error: function(message){
+			var parsedResponse = $.parseJSON(message.responseText);
+			alert(parsedResponse.error.message);
+		}
+	});
+	
+	// Populate customer view table.
+	var customerNum = allCustomers.count;
+	var customerData = allCustomers.data;
+	var counter = 0;
+	var email;
+
 });
 
 
