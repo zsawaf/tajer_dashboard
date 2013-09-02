@@ -125,34 +125,47 @@ $(document).ready(function() {
 	* ------------- Customer Page---------------------------------
 	* ------------------------------------------------------------
 	*/
-	var allCustomers;
-	// View customers
-	$.ajax({
-		async: false,
-		url: "http://api.lvh.me:3000/v1/customers",
-		type: "GET",
-		xhrFields: {
-			withCredentials: true
-		},
-		success: function(response){
-			allCustomers = response;
-		},
-		error: function(message){
-			var parsedResponse = $.parseJSON(message);
-	        alert(response);
-		},
-		error: function(message){
-			var parsedResponse = $.parseJSON(message.responseText);
-			alert(parsedResponse.error.message);
-		}
-	});
 	
-	// Populate customer view table.
-	var customerNum = allCustomers.count;
-	var customerData = allCustomers.data;
-	var counter = 0;
-	var email;
+	/*
+	* ------------------------------------------------------------
+	* ------------- CREATE CUSOMERS ------------------------------
+	* ------------------------------------------------------------
+	*/
+	$("#customerSubmit").click(function(){
+		// first part is error checking.
+		var name = $("#name").val();
+		var email = $("#email").val();
+		var desc = $("#description").val();
+		var num = $("#cardNo").val();
+		var exp_m = $("#m").val();
+		var exp_y = $("#y").val();
+		var c = $("#c").val();
+		
+		alert(desc);
+		
+		// check credit card
+		/* IMPLEMENT THIS LATER */
 
+		// send data to server.
+		var customer = {"email": email, "name": name, "description": desc, "card":{"number": num, "exp_month": exp_m, "exp_year": exp_y, "cvv": c}};
+		$.ajax({
+			url: "http://api.lvh.me:3000/v1/customers",
+			data: customer,
+			type: "POST",
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function(response){
+		        console.log(response);
+				alert("customer created");
+			},
+			error: function(message){
+				$(".alert").css("display", "block");
+				var parsedResponse = $.parseJSON(message.responseText);
+				$(".alert").html(parsedResponse.error.message);
+			}
+		});
+	});
 });
 
 
