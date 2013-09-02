@@ -11,7 +11,7 @@ $(document).ready(function() {
 	
 	// initialize variables to store information.
 	var payments;
-	
+		
 	/*
 	* SET UP AJAX CSRF TOKENS
 	*/
@@ -74,33 +74,53 @@ $(document).ready(function() {
 		});
 	});
 	
-	// Get basic user information from server.
-	/*
+	var allPayments;
+	
 	$.ajax({
-		url: "http://api.lvh.me:3000/v1/accounts/login",
-		data: cred,
-		type: "POST",
+		async: false,
+		url: "http://api.lvh.me:3000/v1/payments",
+		type: "GET",
 		xhrFields: {
 			withCredentials: true
-			},
-	    beforeSend: function(xhr) {
-	    	xhr.setRequestHeader("Authorization", "Basic " + token);
-	  	},
+		},
 		success: function(response){
-	        console.log(response);
-			payments = response;
+			allPayments = response;
 		},
 		error: function(message){
-			alert("retrieving customers failed.");
+			var parsedResponse = $.parseJSON(message);
+			alert(parsedResponse.error.message);
 		}
 	});
-	*/
+	
+	// Populate payment view table.
+	var paymentNum = allPayments.count;
+	var paymentData = allPayments.data;
+	var counter = 0;
+	var id;
+	var customer;
+	var date;
+	var amount;
+	var currency;
+	var paid;
+
+	while (counter < paymentNum) {
+		paid = paymentData[counter].paid;
+		amount = paymentData[counter].amount;
+		date = paymentData[counter].created_at;
+		currency = paymentData[counter].currency;
+		id = paymentData[counter].id;
+		$('tbody', '#viewPayments').append(					
+			'<tr><td>'+id+'</td><td class="center">'+amount+'</td><td class="center">'+currency+'</td><td class="center">'+date+'</td><td class="center"><span class="label label-warning">'+paid+'</span></td></tr>'
+		);
+		counter++;
+	}
+	//'<tr><td>Ajith Hristijan</td><td class="center">2012/03/01</td><td class="center">Member</td><td class="center"><span class="label label-warning">Pending</span></td><td class="center"><a class="btn btn-success" href="#"><i class="icon-zoom-in "></i></a><a class="btn btn-info" href="#"><i class="icon-edit "></i></a><a class="btn btn-danger" href="#"><i class="icon-trash "></i></a></td></tr>'
 });
+
 
 /* Logout user */
 function logout(){
 	$.getScript("js/cookies/jquery.cookie.js", function(){
-		alert("user clicked logout");
 		// remove tajer token from cookie
 	    $.removeCookie('tajer_token');	
 	
