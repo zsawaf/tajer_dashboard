@@ -88,10 +88,15 @@ $(document).ready(function() {
 		},
 		error: function(message){
 			var parsedResponse = $.parseJSON(message);
+	        alert(response);
+		},
+		error: function(message){
+			var parsedResponse = $.parseJSON(message.responseText);
 			alert(parsedResponse.error.message);
 		}
 	});
 	
+
 	// Populate payment view table.
 	var paymentNum = allPayments.count;
 	var paymentData = allPayments.data;
@@ -114,7 +119,6 @@ $(document).ready(function() {
 		);
 		counter++;
 	}
-	//'<tr><td>Ajith Hristijan</td><td class="center">2012/03/01</td><td class="center">Member</td><td class="center"><span class="label label-warning">Pending</span></td><td class="center"><a class="btn btn-success" href="#"><i class="icon-zoom-in "></i></a><a class="btn btn-info" href="#"><i class="icon-edit "></i></a><a class="btn btn-danger" href="#"><i class="icon-trash "></i></a></td></tr>'
 });
 
 
