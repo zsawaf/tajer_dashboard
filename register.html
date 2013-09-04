@@ -74,10 +74,11 @@
 						withCredentials: true
 						},
 					success: function(response){
+						$(".alert").css("display", "none");
 						$(".success").css("display", "block");
 				        $(".success").html("Successfully registered. A confirmation email has been sent. Browser will now redirect to login page momentarily.");
 						setTimeout(function() {
-						  window.location.replace = "login.html";
+						  location.href = "login.html";
 						}, 2000);
 					},
 					error: function(message){
