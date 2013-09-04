@@ -226,14 +226,17 @@ $(document).ready(function() {
 	
 	var count = allCustomers.count;
 	var i = 0;
-	var id = allCustomers.data[0].id;
-	var email = allCustomers.data[0].email;
-	while (i < count) {
-		$('tbody', '#viewCustomers').append(					
-			'<tr><td><a onclick="toCustomerPage(\''+id+'\');">'+id+'</a></td><td class="center">'+email+'</td></tr>'
-		);
-		i++;
+	if (count > 0) {
+		var id = allCustomers.data[0].id;
+		var email = allCustomers.data[0].email;
+		while (i < count) {
+			$('tbody', '#viewCustomers').append(					
+				'<tr><td><a onclick="toCustomerPage(\''+id+'\');">'+id+'</a></td><td class="center">'+email+'</td></tr>'
+			);
+			i++;
+		}
 	}
+
 	
 	/*
 	* ------------------------------------------------------------
