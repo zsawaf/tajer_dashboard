@@ -40,6 +40,15 @@
 	<!-- end: Favicon and Touch Icons -->
 	
 	<!-- Load JS Script here-->
+	<script>
+		$(document).ready(function() {
+			// retrieve session token.
+			var token = $.cookie("tajer_token");
+
+			if (!token){
+				window.location.replace("login.html");
+			}
+	</script>
 	
 		
 </head>
