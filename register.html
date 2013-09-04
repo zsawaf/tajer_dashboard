@@ -42,6 +42,8 @@
 	<script src="js/jquery.js" type="text/javascript"></script>
 	
 	<script>
+		var global_url = "http://api.gettajer.com";
+		
 		// When page loads, hide alert box
 		$(document).ready(function() {
 			// reset user parameters
@@ -64,7 +66,7 @@
 
 				// perform an ajax request.
 				$.ajax({
-					url: "http://api.lvh.me:3000/v1/accounts",
+					url: global_url+"/v1/accounts",
 					data: cred,
 					type: "POST",
 					xhrFields: {

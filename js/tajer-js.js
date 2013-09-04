@@ -1,14 +1,17 @@
 
 $(document).ready(function() {
 	
+	var global_url = "http://api.gettajer.com";
+	//var global_url = "http://api.lvh.me:3000"
 	// Clear alert box.
 	$(".alert").css("display", "none");
 	
 	// retrieve session token.
 	var token = $.cookie("tajer_token");
 	
-	alert(token);
-	
+	if (!token){
+		window.location.replace("login.html");
+	}
 	// initialize variables to store information.
 	var payments;
 		
@@ -56,7 +59,7 @@ $(document).ready(function() {
 
 		var payment = {"amount": amount, "currency": cur, "card":{"number": number, "exp_month": exp_month, "exp_year": exp_year, "cvv": cvv}};
 		$.ajax({
-			url: "http://api.lvh.me:3000/v1/payments",
+			url: global_url+"/v1/payments",
 			data: payment,
 			type: "POST",
 			xhrFields: {
@@ -78,7 +81,7 @@ $(document).ready(function() {
 	
 	$.ajax({
 		async: false,
-		url: "http://api.lvh.me:3000/v1/payments",
+		url: global_url+"/v1/payments",
 		type: "GET",
 		xhrFields: {
 			withCredentials: true
@@ -130,7 +133,7 @@ $(document).ready(function() {
 	* ------------------------------------------------------------
 	*/
 	$.ajax({
-		url: "http://api.lvh.me:3000/v1/payments/"+sessionStorage.getItem('id'),
+		url: global_url+"/v1/payments/"+sessionStorage.getItem('id'),
 		type: "GET",
 		xhrFields: {
 			withCredentials: true
@@ -179,7 +182,7 @@ $(document).ready(function() {
 		// send data to server.
 		var customer = {"email": email, "name": name, "description": desc, "card":{"number": num, "exp_month": exp_m, "exp_year": exp_y, "cvv": c}};
 		$.ajax({
-			url: "http://api.lvh.me:3000/v1/customers",
+			url: global_url+"/v1/customers",
 			data: customer,
 			type: "POST",
 			xhrFields: {
@@ -205,7 +208,7 @@ $(document).ready(function() {
 	var allCustomers;
 	$.ajax({
 		async: false,
-		url: "http://api.lvh.me:3000/v1/customers",
+		url: global_url+"/v1/customers",
 		type: "GET",
 		xhrFields: {
 			withCredentials: true
@@ -236,7 +239,7 @@ $(document).ready(function() {
 	* ------------------------------------------------------------
 	*/
 	$.ajax({
-		url: "http://api.lvh.me:3000/v1/customers/"+sessionStorage.getItem('id'),
+		url: global_url+"/v1/customers/"+sessionStorage.getItem('id'),
 		type: "GET",
 		xhrFields: {
 			withCredentials: true

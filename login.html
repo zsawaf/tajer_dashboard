@@ -42,6 +42,7 @@
 	<script src="js/cookies/jquery.cookie.js"></script>
 	
 	<script>
+		var global_url = "http://api.gettajer.com";
 		// When page loads, hide alert box, clear paramters. Then check if cookie already exists,
 		// then redirect to index page.
 		$(document).ready(function() {
@@ -72,7 +73,7 @@
 
 			// perform an ajax request.
 			$.ajax({
-				url: "http://api.lvh.me:3000/v1/accounts/login",
+				url: global_url+"/v1/accounts/login",
 				data: cred,
 				type: "POST",
 				xhrFields: {
