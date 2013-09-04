@@ -89,10 +89,6 @@ $(document).ready(function() {
 		error: function(message){
 			var parsedResponse = $.parseJSON(message);
 	        alert(response);
-		},
-		error: function(message){
-			var parsedResponse = $.parseJSON(message.responseText);
-			alert(parsedResponse.error.message);
 		}
 	});
 	
@@ -111,18 +107,54 @@ $(document).ready(function() {
 	while (counter < paymentNum) {
 		paid = paymentData[counter].paid;
 		amount = paymentData[counter].amount;
-		date = paymentData[counter].created_at;
+		date = new Date(paymentData[counter].created_at);
 		currency = paymentData[counter].currency;
 		id = paymentData[counter].id;
-		$('tbody', '#viewPayments').append(					
-			'<tr><td>'+id+'</td><td class="center">'+amount+'</td><td class="center">'+currency+'</td><td class="center">'+date+'</td><td class="center"><span class="label label-warning">'+paid+'</span></td></tr>'
-		);
+		// pay close attention to the use of escape characters.
+		if (paid == "false") {
+			$('tbody', '#viewPayments').append(					
+				'<tr><td><a onclick="toPaymentPage(\''+id+'\');">'+id+'</a></td><td class="center">'+amount+'</td><td class="center">'+currency+'</td><td class="center">'+date+'</td><td class="center"><span class="label label-warning">'+paid+'</span></td></tr>'
+			);
+		}
+		else {
+			$('tbody', '#viewPayments').append(					
+				'<tr><td><a onclick="toPaymentPage(\''+id+'\');">'+id+'</a></td><td class="center">'+amount+'</td><td class="center">'+currency+'</td><td class="center">'+date+'</td><td class="center"><span class="label label-success">'+paid+'</span></td></tr>'
+			);
+		}
 		counter++;
 	}
+
+	/*
+	* ------------------------------------------------------------
+	* ------------- Populate Single Payment Page------------------
+	* ------------------------------------------------------------
+	*/
+	$.ajax({
+		url: "http://api.lvh.me:3000/v1/payments/"+sessionStorage.getItem('id'),
+		type: "GET",
+		xhrFields: {
+			withCredentials: true
+		},
+		success: function(response){
+			$("#paymentTitle").html("Payment information for "+id);
+			$("#date").html(response.card.exp_month+'/'+response.card.exp_year);
+			$("#last4").html("Last four digits of card number: "+response.card.last4);
+			if (response.description){
+				$("#description").html("Description: "+response.description);
+			}
+			else {
+				$("#description").html("No description available");
+			}
+		},
+		error: function(message){
+			var parsedResponse = $.parseJSON(message.responseText);
+			console.log(parsedResponse.error.message);
+		}
+	});
 	
 	/*
 	* ------------------------------------------------------------
-	* ------------- Customer Page---------------------------------
+	* ------------- CUSTOMERS====---------------------------------
 	* ------------------------------------------------------------
 	*/
 	
@@ -140,9 +172,7 @@ $(document).ready(function() {
 		var exp_m = $("#m").val();
 		var exp_y = $("#y").val();
 		var c = $("#c").val();
-		
-		alert(desc);
-		
+				
 		// check credit card
 		/* IMPLEMENT THIS LATER */
 
@@ -166,6 +196,74 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	/*
+	* ------------------------------------------------------------
+	* ------------- POPULATE CUSTOMER PAGE -----------------------
+	* ------------------------------------------------------------
+	*/
+	var allCustomers;
+	$.ajax({
+		async: false,
+		url: "http://api.lvh.me:3000/v1/customers",
+		type: "GET",
+		xhrFields: {
+			withCredentials: true
+		},
+		success: function(response){
+			allCustomers = response;
+		},
+		error: function(message){
+			var parsedResponse = $.parseJSON(message);
+	        alert(response);
+		}
+	});
+	
+	var count = allCustomers.count;
+	var i = 0;
+	var id = allCustomers.data[0].id;
+	var email = allCustomers.data[0].email;
+	while (i < count) {
+		$('tbody', '#viewCustomers').append(					
+			'<tr><td><a onclick="toCustomerPage(\''+id+'\');">'+id+'</a></td><td class="center">'+email+'</td></tr>'
+		);
+		i++;
+	}
+	
+	/*
+	* ------------------------------------------------------------
+	* ------------- Populate Single Customer Page-----------------
+	* ------------------------------------------------------------
+	*/
+	$.ajax({
+		url: "http://api.lvh.me:3000/v1/customers/"+sessionStorage.getItem('id'),
+		type: "GET",
+		xhrFields: {
+			withCredentials: true
+		},
+		success: function(response){
+			// customer section
+			$("#customerTitle").html("Customer information for "+id);
+			$("#name").html("Name: "+response.name);
+			$("#email").html("Email: "+response.email);
+			$("#created").html("Created: "+response.created);
+			
+			//card section
+			$("#date").html(response.card.exp_month+'/'+response.card.exp_year);
+			$("#last4").html("Last four digits of card number: "+response.card.last4);
+			if (response.description){
+				$("#description").html("Description: "+response.description);
+			}
+			else {
+				$("#description").html("No description available");
+			}
+		},
+		error: function(message){
+			var parsedResponse = $.parseJSON(message.responseText);
+			console.log(parsedResponse.error.message);
+		}
+	});
+	
 });
 
 
@@ -173,11 +271,24 @@ $(document).ready(function() {
 function logout(){
 	$.getScript("js/cookies/jquery.cookie.js", function(){
 		// remove tajer token from cookie
-	    $.removeCookie('tajer_token');	
-	
+    	$.removeCookie('tajer_token');	
+
 		// redirect to login page.
 		window.location.replace("login.html");	
 	});
 }
+
+// Redirect to specific payment page to show more information.
+function toPaymentPage(id){
+	sessionStorage.setItem('id', id);
+	window.location.replace("payment.html");
+}
+
+// Redirect to customer page.
+function toCustomerPage(id){
+	sessionStorage.setItem('id', id);
+	window.location.replace("customer.html");
+}
+
 
 
