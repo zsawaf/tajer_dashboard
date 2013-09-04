@@ -9,6 +9,8 @@ $(document).ready(function() {
 	// retrieve session token.
 	var token = $.cookie("tajer_token");
 	
+	alert("token: "+token);
+	
 	if (!token){
 		window.location.replace("login.html");
 	}
