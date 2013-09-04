@@ -73,8 +73,10 @@
 						withCredentials: true
 						},
 					success: function(response){
-				        console.log(response);
-						// store cookie.
+				        $(".success").html("Successfully registered. A confirmation email has been sent. Browser will now redirect to login page momentarily.");
+						setTimeout(function() {
+						  window.location.replace = "login.html";
+						}, 2000);
 					},
 					error: function(message){
 						$(".alert").css("display", "block");
@@ -121,6 +123,7 @@
 	
 	<div class="row-fluid">
 		<div class="alert"></div>
+		<div class="success"></div>
 		<div class="login-box">
 			<h2 id="login-title">Register Now!</h2>
 				<form>
