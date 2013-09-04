@@ -52,6 +52,7 @@
 			
 			// hide alert box
 			$(".alert").css("display", "none");
+			$(".success").css("display", "none");
 		});
 		
 		
@@ -73,6 +74,7 @@
 						withCredentials: true
 						},
 					success: function(response){
+						$(".success").css("display", "block");
 				        $(".success").html("Successfully registered. A confirmation email has been sent. Browser will now redirect to login page momentarily.");
 						setTimeout(function() {
 						  window.location.replace = "login.html";
