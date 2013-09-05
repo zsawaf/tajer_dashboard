@@ -3277,10 +3277,10 @@ span.cardImg{
     right:10px;    
     display:none;
     
-    /* /\* now go with the styling *\/ */
-    /* cursor:pointer; */
-    /* font: bold 1em sans-serif; */
-    /* color:#38468F;   */
+    /* now go with the styling */
+    cursor:pointer;
+    font: bold 1em sans-serif;
+    color:#38468F;
 }
 
 
