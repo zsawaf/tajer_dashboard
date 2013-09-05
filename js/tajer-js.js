@@ -33,7 +33,11 @@ $(document).ready(function() {
 	*/
 
        $("#cardNumber").on('input', function(e) {
-	 console.log($.payment.cardType($(this).val()));
+	 var type = $.payment.cardType($(this).val());
+	 if (type == "visa") {
+	   src = '../img/browser-chrome-big.png'
+	 }
+	 $(".cardImg").attr('src', src);
        });
   	
 	$("#paymentSubmit").click(function(){
