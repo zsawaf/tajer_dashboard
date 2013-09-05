@@ -70,6 +70,7 @@ $(document).ready(function() {
 			success: function(response){
 		        //console.log(response);
 				alert("payment successful");
+				window.location.replace("payments.html");
 			},
 			error: function(message){
 				$(".alert").css("display", "block");
