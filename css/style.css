@@ -3226,14 +3226,11 @@ ul.messagesList li span.date {
 	background-image: url('validation.png');
 }
 
-.lowPriorty{
-	background: #36a9e1;
-  	padding: 2px 10px;
-  	color: white;
-  	display: inline-block;
-  	font-size: 12px;
-}
 
-.lowTask{
-	border-left: 2px solid #36a9e1;
+/* New table css */
+#createTable {
+	background-color: #e4e6eb;
+	width: 220px;
+	margin:10px 0 0 -10px;  
+	border-radius: 100px / 50px;
 }
