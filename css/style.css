@@ -3238,6 +3238,7 @@ ul.messagesList li span.date {
 
 #createTable td{
 	padding:5%;
+	text-align:left;
 }
 
 .createModal{
