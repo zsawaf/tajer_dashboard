@@ -35,7 +35,7 @@ $(document).ready(function() {
        $("#cardNumber").on('input', function(e) {
 	 var type = $.payment.cardType($(this).val());
 	 if (type == "visa") {
-	   $(".cardImg").css({ "background-image": 'url(../img/visa.png)', 'background-size': 'contain', "width": '32px', "height": '20px', "background-repeat": 'no-repeat'});
+	   $(".cardImg").css({ "background-image": 'url(../img/visa.png)', 'background-size': 'contain', "width": '32px', "height": '20px', "background-repeat": 'no-repeat', "position":'relative'});
 	 }
 	 else {
 	   $(".cardImg").css({ "background-image": '', 'background-size': 'contain', "width": '32px', "height": '20px'});
