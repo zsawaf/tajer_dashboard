@@ -68,7 +68,7 @@ $(document).ready(function() {
 				withCredentials: true
 			},
 			success: function(response){
-		        console.log(response);
+		        //console.log(response);
 				alert("payment successful");
 			},
 			error: function(message){
@@ -153,7 +153,7 @@ $(document).ready(function() {
 		},
 		error: function(message){
 			var parsedResponse = $.parseJSON(message.responseText);
-			console.log(parsedResponse.error.message);
+			//console.log(parsedResponse.error.message);
 		}
 	});
 	
@@ -191,7 +191,7 @@ $(document).ready(function() {
 				withCredentials: true
 			},
 			success: function(response){
-		        console.log(response);
+		        //console.log(response);
 				alert("customer created");
 			},
 			error: function(message){
@@ -268,7 +268,7 @@ $(document).ready(function() {
 		},
 		error: function(message){
 			var parsedResponse = $.parseJSON(message.responseText);
-			console.log(parsedResponse.error.message);
+			//console.log(parsedResponse.error.message);
 		}
 	});
 	
