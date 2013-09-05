@@ -225,21 +225,21 @@ function template_functions(){
 	$('[rel="popover"],[data-rel="popover"]').popover();
 
 	/* ---------- File Manager ---------- */
-	var elf = $('.file-manager').elfinder({
-		url : 'misc/elfinder-connector/connector.php'  // connector URL (REQUIRED)
-	}).elfinder('instance');
+	// var elf = $('.file-manager').elfinder({
+	// 	url : 'misc/elfinder-connector/connector.php'  // connector URL (REQUIRED)
+	// }).elfinder('instance');
 
 	/* ---------- Star Rating ---------- */
 	$('.raty').raty({
 		score : 4 //default stars
 	});
 
-	/* ---------- Uploadify ---------- */
-	$('#file_upload').uploadify({
-		'swf'      : 'misc/uploadify.swf',
-		'uploader' : 'misc/uploadify.php'
-		// Put your options here
-	});
+	// /* ---------- Uploadify ---------- */
+	// $('#file_upload').uploadify({
+	// 	'swf'      : 'misc/uploadify.swf',
+	// 	'uploader' : 'misc/uploadify.php'
+	// 	// Put your options here
+	// });
 
 	/* ---------- Fullscreen ---------- */
 	$('#toggle-fullscreen').button().click(function () {
