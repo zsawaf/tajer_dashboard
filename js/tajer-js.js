@@ -37,7 +37,7 @@ $(document).ready(function() {
 	$("#paymentSubmit").click(function(){
 				
 		// first part is error checking.
-		var amount = $("#amount").val().text().replace(/ /g,'');
+		var amount = $("#amount").text();
 		var cur = $("#currency").val();
 		var number = $("#cardNumber").val();
 	        var expiry = $("#expiry").val()
