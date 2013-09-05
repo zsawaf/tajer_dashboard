@@ -3225,3 +3225,15 @@ ul.messagesList li span.date {
 	background-color: #FFCCBA;
 	background-image: url('validation.png');
 }
+
+.lowPriorty{
+	background: #36a9e1;
+  	padding: 2px 10px;
+  	color: white;
+  	display: inline-block;
+  	font-size: 12px;
+}
+
+.lowTask{
+	border-left: 2px solid #36a9e1;
+}
