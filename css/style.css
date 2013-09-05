@@ -3230,7 +3230,8 @@ ul.messagesList li span.date {
 /* New table css */
 #createTable {
 	background-color: #e4e6eb;
-	width: 220px;
-	margin:10px 0 0 -10px;  
-	border-radius: 100px / 50px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	padding:10%;
 }
