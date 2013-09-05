@@ -3271,18 +3271,3 @@ ul.messagesList li span.date {
     color: gray;
 	text-align:center;
 }
-
-input#cardNumber {
-    float: left
-}
-
-span.cardImg{
-    position:absolute;
-    right:10px;    
-    display:none;
-    
-    /* now go with the styling */
-    cursor:pointer;
-    font: bold 1em sans-serif;
-    color:#38468F;
-}
