@@ -168,6 +168,7 @@
 			<div class="createModal">
 				<!-- Payment Form here-->
 				<div class="alert"></div>
+				<fieldset>
 				  	<table id="createTable">
 						<tr><td>Amount: </td><td><input type="text" class="span3" id="amount"></td></tr>
 						<tr><td>Currency: </td><td><select data-placeholder="Currency" id="currency" data-rel="chosen">
@@ -178,17 +179,18 @@
 							</optgroup>
 						</select></td></tr>
 					</table>
-					
+				</fieldset>
+				<fieldset>
 					<table id="createTable">
 						<tr><td>Credit Card Number: </td><td><input type="text" class="span5" id="cardNumber"></td></tr>
 						<tr><td>Expiry Date: </td><td><input type="text" class="span1" id="month" data-placeholder="MM"><b>/</b><input type="text" class="span1" id="year" data-placeholder="YY"></td></tr>
 						<tr><td>CVC: </td><td><input type="text" class="span5" id="cvv"></td></tr>
 					</table>
-					
-					<div class="form-actions">
-						<a class="btn" data-dismiss="modal">Close</a>
-						<a id="paymentSubmit" class="btn btn-primary">Complete Payment</a>
-					</div>
+				</fieldset>
+				<div class="form-actions">
+					<a class="btn" data-dismiss="modal">Close</a>
+					<a id="paymentSubmit" class="btn btn-primary">Complete Payment</a>
+				</div>
 			</div>
 		</div>
 		
