@@ -74,7 +74,7 @@ $(document).ready(function() {
 			success: function(response){
 		        //console.log(response);
 				alert("payment successful");
-				window.location.replace("payments.html");
+				window.location.replace("index.html");
 			},
 			error: function(message){
 				$(".alert").css("display", "block");
