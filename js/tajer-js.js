@@ -173,9 +173,7 @@ $(document).ready(function() {
 	* ------------------------------------------------------------
 	*/
 	$("#customerSubmit").click(function(){
-		
-		$(".alert").css("display", "none");
-		
+				
 		// first part is error checking.
 		var name = $("#name").val();
 		var email = $("#email").val();
