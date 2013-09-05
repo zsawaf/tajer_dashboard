@@ -35,10 +35,10 @@ $(document).ready(function() {
        $("#cardNumber").on('input', function(e) {
 	 var type = $.payment.cardType($(this).val());
 	 if (type == "visa") {
-	   $(".cardImg").css({ "background-image": 'url(../img/visa.png)', 'background-size': 'contain', "width": '32px', "height": '20px'})
+	   $(".cardImg").css({ "background-image": 'url(../img/visa.png)', 'background-size': 'contain', "width": '32px', "height": '20px', "background-repeat": 'no-repeat'});
 	 }
 	 else {
-	   $(".cardImg").css({ "background-image": '', 'background-size': 'contain', "width": '32px', "height": '20px'})
+	   $(".cardImg").css({ "background-image": '', 'background-size': 'contain', "width": '32px', "height": '20px'});
 	 }
        });
   	
@@ -49,10 +49,10 @@ $(document).ready(function() {
 		var cur = $("#currency").val();
 		var number = $("#cardNumber").val().replace(/ /g,'');
 		var cvv = $("#cvv").val();
-	        var expiry = $("#expiry").val()
-	        var splitted = expiry.split('/');
-	        var exp_month = splitted[0];
-	        var exp_year = splitted[1];
+	    var expiry = $("#expiry").val()
+	    var splitted = expiry.split('/');
+	    var exp_month = splitted[0];
+	    var exp_year = splitted[1];
 	  
 		// error check amount
 		// should not be negative

@@ -169,6 +169,7 @@
 	    <div class="createModal">
 	      <!-- Payment Form here-->
 	      <div class="alert"></div>
+		<h3>Payment Information</h3>
 	      <table id="createTable">
 		<div id="padding">
 		  <tr><td>Amount: </td><td><input type="text" class="span5" id="amount"></td></tr>
@@ -180,10 +181,12 @@
 			</optgroup>
 		  </select></td></tr>
 		</div>
-	      </table>
-	      <hr>
-	      <table id="createTable">
-	    </div id="padding">
+		</div id="padding">
+	    </table>
+	    <hr>
+		<h3>Credit Card Information</h3>
+	    <table id="createTable">
+			<div id="padding">
 	    <tr>
 	      <td>Card Number: </td>
 	      <!-- <td><input type="text" class="span9" id="cardNumber"></td> -->
@@ -203,6 +206,7 @@
 	      <td>CVC: </td>
 	      <td><input type="text" class="span4" id="cvv" pattern="\d*" x-autocompletetype="cc-csc" maxlength="4" autocomplete="off"></td>
 	    </tr>
+	  </div>
 	  </div>
 	  </table>
 	  <div class="form-actions">
