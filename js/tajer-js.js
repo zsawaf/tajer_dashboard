@@ -209,7 +209,7 @@ $(document).ready(function() {
 		});
 	});
 
-       $('input.cc-num').payment('formatCardNumber');
+       $('input#cardNumber').payment('formatCardNumber');
 	
 	/*
 	* ------------------------------------------------------------
