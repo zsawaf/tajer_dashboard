@@ -3250,3 +3250,24 @@ ul.messagesList li span.date {
 #padding {
 	padding: 3%;
 }
+
+::-webkit-input-placeholder {
+    color: #e4e6eb;
+	text-align:center;
+	
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #e4e6eb;
+	text-align:center; 
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: #e4e6eb;
+	text-align:center; 
+}
+
+:-ms-input-placeholder {  
+    color: #e4e6eb;
+	text-align:center;
+}
