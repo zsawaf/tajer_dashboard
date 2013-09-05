@@ -31,23 +31,22 @@ $(document).ready(function() {
 	* ------------- CREATE PAYMENTS ------------------------------
 	* ------------------------------------------------------------
 	*/
-	
 
-  
+       $("#cardNumber").on('input', function() {
+	 console.log($.payment.cardType($(this)));
+       });
+  	
 	$("#paymentSubmit").click(function(){
 				
 		// first part is error checking.
 		var amount = $("#amount").val();
 		var cur = $("#currency").val();
 		var number = $("#cardNumber").val().replace(/ /g,'');
-	        var expiry = $("#expiry").val()
 		var cvv = $("#cvv").val();
-
+	        var expiry = $("#expiry").val()
 	        var splitted = expiry.split('/');
 	        var exp_month = splitted[0];
 	        var exp_year = splitted[1];
-
-	  alert(number  + exp_month + exp_year)
 	  
 		// error check amount
 		// should not be negative
@@ -65,6 +64,7 @@ $(document).ready(function() {
 		}
 		// check credit card
 		/* IMPLEMENT THIS LATER */
+	        // use jquery.payment
 
 		// send data to server.
 
