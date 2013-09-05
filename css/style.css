@@ -3243,6 +3243,11 @@ ul.messagesList li span.date {
 	text-align:left;
 }
 
+#cardTD {
+	padding:0;
+	text-align:left;
+}
+
 .createModal{
 	padding:5%;
 }
