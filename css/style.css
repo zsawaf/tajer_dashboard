@@ -3229,12 +3229,14 @@ ul.messagesList li span.date {
 
 /* New table css */
 #createTable {
+	width:90%;
 	border:1px solid #e4e6eb;
 	background-color: white;
 	padding:5%;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+	border-collapse:separate;
 }
 
 #createTable td{
