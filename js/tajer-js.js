@@ -35,7 +35,6 @@ $(document).ready(function() {
        $("#cardNumber").on('input', function(e) {
 	 var type = $.payment.cardType($(this).val());
 	 if (type == "visa") {
-	   console.log('visa');
 	   $(".cardImg").css({ "background-image": 'url(../img/visa.png)', 'background-size': 'contain', "width": '32px', "height": '20px'})
 	 }
 	 else {
