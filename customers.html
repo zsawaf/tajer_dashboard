@@ -159,89 +159,31 @@
 					<button type="button" class="close" data-dismiss="modal">×</button>
 					<h3>Create Customer</h3>
 				</div>
-				<div class="modal-body">
+				<div class="createModal">
 					<!-- Payment Form here-->
 					<div class="alert"></div>
-					  <fieldset>
-						<div class="control-group">
-						  <label class="control-label" for="Name">Name </label>
-						  <div class="controls">
-							<input type="text" class="span3" id="name">
-						  </div>
-						</div>
-
-						<div class="control-group">
-						  <label class="control-label" for="Email">Email </label>
-						  <div class="controls">
-							<input type="text" class="span3" id="email">
-						  </div>
-						</div>
-						
-						<div class="control-group">
-						  <label class="control-label" for="description">Description </label>
-						  <div class="controls">
-							<input type="text" class="span5" id="description">
-						  </div>
-						</div>
-
-						<br>
-						<div class="control-group">
-						  <label class="control-label" for="card">Card Number </label>
-						  <div class="controls">
-							<input type="text" class="span3" id="cardNo">
-						  </div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="selectError20">Expiration Date </label>
-							<div class="controls">
-								<select data-placeholder="Month" id="m" data-rel="chosen">
-									<option value=""></option>
-									<optgroup label="Month">
-									  	<option>01</option>
-									  	<option>02</option>
-									  	<option>03</option>
-									  	<option>04</option>
-										<option>05</option>
-										<option>06</option>
-										<option>07</option>
-										<option>08</option>
-										<option>09</option>
-										<option>10</option>
-										<option>11</option>
-										<option>12</option>
-									</optgroup>
-								</select>	
-								<select data-placeholder="Year" id="y" data-rel="chosen">
-									<option value=""></option>
-									<optgroup label="Year">
-									  	<option>2013</option>
-									  	<option>2014</option>
-									  	<option>2015</option>
-									  	<option>2016</option>
-										<option>2017</option>
-										<option>2018</option>
-										<option>2019</option>
-										<option>2020</option>
-										<option>2021</option>
-										<option>2022</option>
-										<option>2023</option>
-									</optgroup>
-							</select>
+					<h3>Customer Information</h3>
+					  	<table id="createTable">
+							<div id="padding">
+							<tr><td>Name: </td><td><input type="text" class="span5" id="name"></td></tr>
+							<tr><td>Email: </td><td><input type="text" class="span5" id="email"></td></tr>
+							<tr><td>Description: </td><td><input type="textfield" class="span12" id="description"></td></tr>
 							</div>
-						</div>
-						<br>
-						<div class="control-group">
-						  <label class="control-label" for="card">CVV </label>
-						  <div class="controls">
-							<input type="text" class="span3" id="c">
-							<p class="help-block">Please enter 3 digit security number at the back of the card.</p>
-						  </div>
-						</div>
-						<div class="form-actions">
-							<a class="btn" data-dismiss="modal">Close</a>
-							<a id="customerSubmit" class="btn btn-primary">Save Customer</a>
-						</div>
-					  </fieldset>				
+						</table>
+						<hr>
+						<h3>Customer Card Information</h3>
+						<table id="createTable">
+							</div id="padding">
+							<tr><td>Credit Card Number: </td><td><input type="text" class="span9" id="cardNo"></td></tr>
+							<tr><td>Expiry Date: </td><td><input type="text" class="span4" id="m" placeholder="MM"><b> / </b><input type="text" class="span4" id="y" placeholder="YY"></td></tr>
+							<tr><td>CVC: </td><td><input type="text" class="span4" id="c"></td></tr>
+							</div>
+						</table>
+					<div class="form-actions">
+						<a class="btn" data-dismiss="modal">Close</a>
+						<a id="customerSubmit" class="btn btn-primary">Create Customer</a>
+					</div>
+				</div>
 				</div>
 			</div>
 			
