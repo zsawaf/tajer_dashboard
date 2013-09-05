@@ -3235,11 +3235,12 @@ ul.messagesList li span.date {
 	border-radius: 10px;
 }
 
-#createTable tr{
+#createTable td{
 	padding:5%;
+	text-align:center;
 }
 
 .createModal{
-	padding:10%;
+	padding:5%;
 }
 
