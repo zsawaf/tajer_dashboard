@@ -32,7 +32,9 @@ $(document).ready(function() {
 	* ------------------------------------------------------------
 	*/
 
-       $("#cardNumber").on('input', function() {
+       $("#cardNumber").on('input', function(e) {
+	 console.log($(this));
+	 console.log($(this).val());
 	 console.log($.payment.cardType($(this)));
        });
   	
