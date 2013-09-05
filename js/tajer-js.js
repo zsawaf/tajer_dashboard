@@ -37,17 +37,17 @@ $(document).ready(function() {
 	$("#paymentSubmit").click(function(){
 				
 		// first part is error checking.
-		var amount = $("#amount").val();
+		var amount = $("#amount").replace(/ /g,'');
 		var cur = $("#currency").val();
 		var number = $("#cardNumber").val();
 	        var expiry = $("#expiry").val()
-		var exp_month = $("#month").val();
-		var exp_year = $("#year").val();
 		var cvv = $("#cvv").val();
 
 	        var splitted = expiry.split('/');
 	        var exp_month = splitted[0];
 	        var exp_year = splitted[1];
+
+	  alert(amount  + exp_month + exp_year)
 	  
 		// error check amount
 		// should not be negative
