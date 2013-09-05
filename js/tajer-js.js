@@ -70,6 +70,7 @@ $(document).ready(function() {
 			success: function(response){
 		        //console.log(response);
 				alert("payment successful");
+				window.location.replace("payments.html");
 			},
 			error: function(message){
 				$(".alert").css("display", "block");
@@ -159,7 +160,7 @@ $(document).ready(function() {
 	
 	/*
 	* ------------------------------------------------------------
-	* ------------- CUSTOMERS====---------------------------------
+	* ------------- CUSTOMERS-------------------------------------
 	* ------------------------------------------------------------
 	*/
 	
@@ -193,6 +194,7 @@ $(document).ready(function() {
 			success: function(response){
 		        //console.log(response);
 				alert("customer created");
+				window.location.replace("customers.html");
 			},
 			error: function(message){
 				$(".alert").css("display", "block");
