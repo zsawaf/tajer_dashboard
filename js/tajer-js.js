@@ -31,6 +31,18 @@ $(document).ready(function() {
 	* ------------- CREATE PAYMENTS ------------------------------
 	* ------------------------------------------------------------
 	*/
+	
+	// Initialize skeuocard.
+	card = new Skeuocard($("#skeuocard"), {
+	    initialValues: {
+	    number: "4111111111111111",
+	    expMonth: "1",
+	    expYear: "2016"
+	    name: "James Doe",
+	    cvc: "123"
+	  }
+	});
+  
 	$("#paymentSubmit").click(function(){
 				
 		// first part is error checking.
