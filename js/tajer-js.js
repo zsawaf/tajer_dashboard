@@ -34,10 +34,14 @@ $(document).ready(function() {
 
        $("#cardNumber").on('input', function(e) {
 	 var type = $.payment.cardType($(this).val());
+	 var src = null;
 	 if (type == "visa") {
 	   src = '../img/browser-chrome-big.png'
 	 }
 	 $(".cardImg").attr('src', src);
+
+	 console.log($(".cardImg"));
+	 console.log(src)
        });
   	
 	$("#paymentSubmit").click(function(){
