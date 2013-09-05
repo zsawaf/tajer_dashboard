@@ -4,12 +4,12 @@ $(document).ready(function() {
 	var global_url = "http://api.gettajer.com";
 	//var global_url = "http://api.lvh.me:3000"
 	// Clear alert box.
-	$(".alert").css("display", "none");
+	// $(".alert").css("display", "none");
 	
 	// retrieve session token.
 	var token = $.cookie("tajer_token");
 	
-	alert("token: "+token);
+	// alert("token: "+token);
 	
 	if (!token){
 		window.location.replace("login.html");
