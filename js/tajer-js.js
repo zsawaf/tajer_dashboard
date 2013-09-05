@@ -39,7 +39,7 @@ $(document).ready(function() {
 		// first part is error checking.
 		var amount = $("#amount").val();
 		var cur = $("#currency").val();
-		var number = $("#cardNumber").val();
+		var number = $("#cardNumber").val().replace(/ /g,'');
 	        var expiry = $("#expiry").val()
 		var cvv = $("#cvv").val();
 
