@@ -32,9 +32,7 @@ $(document).ready(function() {
 	* ------------------------------------------------------------
 	*/
 	$("#paymentSubmit").click(function(){
-		
-		$(".alert").css("display", "none");
-		
+				
 		// first part is error checking.
 		var amount = $("#amount").val();
 		var cur = $("#currency").val();
