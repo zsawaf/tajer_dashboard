@@ -43,6 +43,10 @@ $(document).ready(function() {
 		var exp_month = $("#month").val();
 		var exp_year = $("#year").val();
 		var cvv = $("#cvv").val();
+
+	  var expiry = $("#expiry").val();
+	  alert(expiry);
+	  
 		
 		// error check amount
 		// should not be negative
@@ -134,6 +138,10 @@ $(document).ready(function() {
 		counter++;
 	}
 
+       $('input#cardNumber').payment('formatCardNumber');
+       $('input#expiry').payment('formatCardExpiry');
+       $('input#cvv').payment('formatCardCVC');
+
 	/*
 	* ------------------------------------------------------------
 	* ------------- Populate Single Payment Page------------------
@@ -208,8 +216,6 @@ $(document).ready(function() {
 			}
 		});
 	});
-
-       $('input#cardNumber').payment('formatCardNumber');
 	
 	/*
 	* ------------------------------------------------------------

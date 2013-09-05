@@ -187,15 +187,16 @@
 	    <tr>
 	      <td>Card Number: </td>
 	      <!-- <td><input type="text" class="span9" id="cardNumber"></td> -->
-	      <td><input type="text" class="span9" id="cardNumber" pattern="\d*" autocompletetype="cc-number"></td>
+	      <td><input type="text" class="span9" id="cardNumber" pattern="\d*" autocompletetype="cc-number" placeholder="•••• •••• •••• ••••"></td>
 	    </tr>
 	    <tr>
 	      <td>Expiry Date: </td>
-	      <td><input type="text" class="span4" id="month" placeholder="MM"><b> / </b><input type="text" class="span4" id="year" placeholder="YY"></td>
+	      <!-- <td><input type="text" class="span4" id="month" placeholder="MM"><b> / </b><input type="text" class="span4" id="year" placeholder="YY"></td> -->
+	      <td><input type="text" class="span4" id="expiry" pattern="\d*" x-autocompletetype="cc-exp" placeholder="MM / YY"></td>
 	    </tr>
 	    <tr>
 	      <td>CVC: </td>
-	      <td><input type="text" class="span4" id="cvv"></td>
+	      <td><input type="text" class="span4" id="cvv" pattern="\d*" x-autocompletetype="cc-csc" maxlength="4" autocomplete="off"></td>
 	    </tr>
 	  </div>
 	  </table>
