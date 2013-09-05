@@ -47,7 +47,7 @@ $(document).ready(function() {
 	        var exp_month = splitted[0];
 	        var exp_year = splitted[1];
 
-	  alert(amount  + exp_month + exp_year)
+	  alert(number  + exp_month + exp_year)
 	  
 		// error check amount
 		// should not be negative
