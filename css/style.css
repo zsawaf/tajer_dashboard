@@ -3230,14 +3230,15 @@ ul.messagesList li span.date {
 /* New table css */
 #createTable {
 	width:80%;
-	background-color: #e4e6eb;
+	background-color: white;
+	border: solid 1px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 }
 
 #createTable td{
-	padding:5%;
+	padding:2%;
 	text-align:left;
 }
 
