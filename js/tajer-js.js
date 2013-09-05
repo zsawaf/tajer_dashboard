@@ -34,11 +34,13 @@ $(document).ready(function() {
 
        $("#cardNumber").on('input', function(e) {
 	 var type = $.payment.cardType($(this).val());
-	 var src = null;
 	 if (type == "visa") {
-	   src = 'url(../img/visa.png)'
+	   console.log('visa');
+	   $(".cardImg").css({ "background-image": 'url(../img/visa.png)', "width": '32px', "height": '20px'})
 	 }
-	 $(".cardImg").css({ "background-image": src, "width": 32px, "height": 20px})
+	 else {
+	   $(".cardImg").css({ "background-image": '', "width": '32px', "height": '20px'})
+	 }
        });
   	
 	$("#paymentSubmit").click(function(){
