@@ -208,6 +208,8 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+       $('input#cardNumber').payment('formatCardNumber');
 	
 	/*
 	* ------------------------------------------------------------
