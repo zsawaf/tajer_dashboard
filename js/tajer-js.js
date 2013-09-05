@@ -36,12 +36,9 @@ $(document).ready(function() {
 	 var type = $.payment.cardType($(this).val());
 	 var src = null;
 	 if (type == "visa") {
-	   src = '../img/browser-chrome-big.png'
+	   src = 'url(../img/browser-chrome-big.png)'
 	 }
-	 $(".cardImg").attr('src', src);
-
-	 console.log($(".cardImg"));
-	 console.log(src)
+	 $(".cardImg").css({ "background-image": src})
        });
   	
 	$("#paymentSubmit").click(function(){
