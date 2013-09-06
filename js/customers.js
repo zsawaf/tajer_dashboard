@@ -3,6 +3,20 @@
 
 $(document).ready(function() {
 	
+	// alert("token: "+token);
+	if (!token) {
+		window.location.replace("login.html");
+	}
+
+	/*
+	* SET UP AJAX CSRF TOKENS
+	*/
+	$.ajaxSetup({
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader('Authorization', "Basic " + token);
+		}
+	});
+	
 	/*
 	* ------------------------------------------------------------
 	* ------------- CREATE CUSOMERS ------------------------------

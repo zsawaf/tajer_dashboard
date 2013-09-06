@@ -5,6 +5,11 @@ $(document).ready(function() {
 	* ------------------------------------------------------------
 	*/
 	$.ajax({
+		
+		if (!token) {
+			window.location.replace("login.html");
+		}
+		
 		url: global_url + "/v1/payments/" + sessionStorage.getItem('id'),
 		type: "GET",
 		xhrFields: {
