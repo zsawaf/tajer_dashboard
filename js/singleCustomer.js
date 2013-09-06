@@ -6,10 +6,6 @@ $(document).ready(function() {
 	*/
 	$.ajax({
 		
-		if (!token) {
-			window.location.replace("login.html");
-		}
-		
 		url: global_url + "/v1/customers/" + sessionStorage.getItem('id'),
 		type: "GET",
 		xhrFields: {
