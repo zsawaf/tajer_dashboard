@@ -97,7 +97,9 @@ $(document).ready(function() {
 	}
       });
     });
+  };
 
+  function view_payments() {
     var allPayments;
 
     $.ajax({
