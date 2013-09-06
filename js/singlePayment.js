@@ -25,4 +25,4 @@ $(document).ready(function() {
 			//console.log(parsedResponse.error.message);
 		}
 	});
-}
+});
