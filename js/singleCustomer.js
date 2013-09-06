@@ -12,7 +12,7 @@ $(document).ready(function() {
 		},
 		success: function(response) {
 			// customer section
-			$("#customerTitle").html("Customer information for " + id);
+			$("#customerTitle").html("Customer information for " + sessionStorage.getItem('id'));
 			$("#name").html("Name: " + response.name);
 			$("#email").html("Email: " + response.email);
 			$("#created").html("Created: " + response.created);

@@ -183,8 +183,8 @@
             <!-- /span -->
             <!-- end: Content -->
           </div>
-          <!-- /fluid-row -->
-          <div class='modal hide fade' id='paymentModal'>
+        <!-- /fluid-row -->
+        <div class='modal hide fade' id='paymentModal'>
             <div class='modal-header'>
               <button class='close' data-dismiss='modal' type='button'>×</button>
               <h3>Create Payment</h3>
@@ -193,63 +193,60 @@
               <!-- Payment Form here -->
               <div class='alert'></div>
               <h3>Payment Information</h3>
-              <table id='createTable'></table>
-              <div id='padding'>
-                <tr>
-                  <td>Amount:</td>
-                  <td>
-                    <input class='span5' id='amount' type='text'>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Currency:</td>
-                  <td>
-                    <select class='span12' data-placeholder='Currency' data-rel='chosen' id='currency'>
-                      <option value=''></option>
-                      <optgroup label='Currency'>
-                        <option>USD</option>
-                        <option>JOD</option>
-                      </optgroup>
-                    </select>
-                  </td>
-                </tr>
-              </div>
-              </div id="padding">
+              <table id='createTable'>
+              	<div id='padding'>
+	                <tr>
+	                  <td>Amount:</td>
+	                  <td><input class='span5' id='amount' type='text'></td>
+	                </tr>
+	                <tr>
+	                  <td>Currency:</td>
+	                  <td>
+	                    <select class='span12' data-placeholder='Currency' data-rel='chosen' id='currency'>
+	                      <option value=''></option>
+	                      <optgroup label='Currency'>
+	                        <option>USD</option>
+	                        <option>JOD</option>
+	                      </optgroup>
+	                    </select>
+	                  </td>
+	                </tr>
+	              </div>
+              </table>
               <hr>
               <h3>Credit Card Information</h3>
-              <table id='createTable'></table>
-              <div id='padding'>
-                <tr>
-                  <td>Card Number:</td>
-                  <!-- <td><input type="text" class="span9" id="cardNumber"></td> -->
-                  <td>
-                    <input autocompletetype='cc-number' class='span9' id='cardNumber' pattern='\d*' placeholder='•••• •••• •••• ••••' type='text'>
-                  </td>
-                  <td id='cardTD'>
-                    <div class='span3 cardImg'></div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Expiry Date:</td>
-                  <!-- <td><input type="text" class="span4" id="month" placeholder="MM"><b> / </b><input type="text" class="span4" id="year" placeholder="YY"></td> -->
-                  <td>
-                    <input class='span4' id='expiry' pattern='\d*' placeholder='MM / YY' type='text' x-autocompletetype='cc-exp'>
-                  </td>
-                </tr>
-                <tr>
-                  <td>CVC:</td>
-                  <td>
-                    <input autocomplete='off' class='span4' id='cvv' maxlength='4' pattern='\d*' type='text' x-autocompletetype='cc-csc'>
-                  </td>
-                </tr>
-              </div>
+              <table id='createTable'>
+              	<div id='padding'>
+	                <tr>
+	                  <td>Card Number:</td>
+	                  <!-- <td><input type="text" class="span9" id="cardNumber"></td> -->
+	                  <td>
+	                    <input autocompletetype='cc-number' class='span9' id='cardNumber' pattern='\d*' placeholder='•••• •••• •••• ••••' type='text'>
+	                  </td>
+	                  <td id='cardTD'>
+	                    <div class='span3 cardImg'></div>
+	                  </td>
+	                </tr>
+	                <tr>
+	                  <td>Expiry Date:</td>
+	                  <!-- <td><input type="text" class="span4" id="month" placeholder="MM"><b> / </b><input type="text" class="span4" id="year" placeholder="YY"></td> -->
+	                  <td>
+	                    <input class='span4' id='expiry' pattern='\d*' placeholder='MM / YY' type='text' x-autocompletetype='cc-exp'>
+	                  </td>
+	                </tr>
+	                <tr>
+	                  <td>CVC:</td>
+	                  <td>
+	                    <input autocomplete='off' class='span4' id='cvv' maxlength='4' pattern='\d*' type='text' x-autocompletetype='cc-csc'>
+	                  </td>
+	                </tr>
+	              </div>
+				</table>
             </div>
             <div class='form-actions'>
-              <a class='btn' data-dismiss='modal'>Close</a>
               <a class='btn btn-primary' id='paymentSubmit'>Complete Payment</a>
             </div>
           </div>
-        </div>
         <div class='clearfix'></div>
         <footer>
           <p>
