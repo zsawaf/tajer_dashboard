@@ -11,7 +11,7 @@ $(document).ready(function() {
 			withCredentials: true
 		},
 		success: function(response) {
-			$("#paymentTitle").html("Payment information for " + id);
+			$("#paymentTitle").html("Payment information for " + sessionStorage.getItem('id'));
 			$("#date").html(response.card.exp_month + '/' + response.card.exp_year);
 			$("#last4").html("Last four digits of card number: " + response.card.last4);
 			if (response.description) {
