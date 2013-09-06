@@ -3,6 +3,7 @@ $(document).ready(function() {
 	// initialize variables to store information.
 	var payments;
 
+	alert(global_url);
 	/*
 	* SET UP AJAX CSRF TOKENS
 	*/
