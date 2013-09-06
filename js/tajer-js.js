@@ -1,118 +1,130 @@
-
 $(document).ready(function() {
-	
+
 	var global_url = "http://api.gettajer.com";
 	//var global_url = "http://api.lvh.me:3000"
 	// Clear alert box.
 	// $(".alert").css("display", "none");
-	
 	// retrieve session token.
 	var token = $.cookie("tajer_token");
-	
+
 	// alert("token: "+token);
-	
-	if (!token){
+	if (!token) {
 		window.location.replace("login.html");
 	}
 	// initialize variables to store information.
 	var payments;
-		
+
 	/*
 	* SET UP AJAX CSRF TOKENS
 	*/
 	$.ajaxSetup({
-	    beforeSend: function(xhr) {
+		beforeSend: function(xhr) {
 			xhr.setRequestHeader('Authorization', "Basic " + token);
-        }
+		}
 	});
-	
+
 	/*
 	* ------------------------------------------------------------
 	* ------------- CREATE PAYMENTS ------------------------------
 	* ------------------------------------------------------------
 	*/
 
-       $("#cardNumber").on('input', function(e) {
-	 var type = $.payment.cardType($(this).val());
-	 if (type == "visa") {
-	   $(".cardImg").css({ "background-image": 'url(../img/visa.png)', 'background-size': 'contain', "width": '32px', "height": '20px', "background-repeat": 'no-repeat'});
-	 }
-	 else {
-	   $(".cardImg").css({ "background-image": '', 'background-size': 'contain', "width": '32px', "height": '20px'});
-	 }
-       });
-  	
-	$("#paymentSubmit").click(function(){
-				
+	$("#cardNumber").on('input', function(e) {
+		var type = $.payment.cardType($(this).val());
+		if (type == "visa") {
+			$(".cardImg").css({
+				"background-image": 'url(../img/visa.png)',
+				'background-size': 'contain',
+				"width": '32px',
+				"height": '20px',
+				"background-repeat": 'no-repeat'
+			});
+		} else {
+			$(".cardImg").css({
+				"background-image": '',
+				'background-size': 'contain',
+				"width": '32px',
+				"height": '20px'
+			});
+		}
+	});
+
+	$("#paymentSubmit").click(function() {
+
 		// first part is error checking.
 		var amount = $("#amount").val();
 		var cur = $("#currency").val();
-		var number = $("#cardNumber").val().replace(/ /g,'');
+		var number = $("#cardNumber").val().replace(/ /g, '');
 		var cvv = $("#cvv").val();
-	    var expiry = $("#expiry").val()
-	    var splitted = expiry.split('/');
-	    var exp_month = splitted[0];
-	    var exp_year = splitted[1];
-	  
+		var expiry = $("#expiry").val()
+		var splitted = expiry.split('/');
+		var exp_month = splitted[0];
+		var exp_year = splitted[1];
+
 		// error check amount
 		// should not be negative
 		if (amount < 0) {
 			$(".alert").css("display", "block");
 			$(".alert").html("Amount should be a positive value");
-		}
-		else if (!amount){
+		} else if (!amount) {
 			$(".alert").css("display", "block");
 			$(".alert").html("Please fill in amount");
-		}
-		else {
+		} else {
 			// reset error
 			$(".alert").css("display", "none");
 		}
 		// check credit card
 		/* IMPLEMENT THIS LATER */
-	        // use jquery.payment
-
+		// use jquery.payment
 		// send data to server.
-
-		var payment = {"amount": amount, "currency": cur, "card":{"number": number, "exp_month": exp_month, "exp_year": exp_year, "cvv": cvv}};
+		var payment = {
+			"amount": amount,
+			"currency": cur,
+			"card": {
+				"number": number,
+				"exp_month": exp_month,
+				"exp_year": exp_year,
+				"cvv": cvv
+			}
+		};
 		$.ajax({
-			url: global_url+"/v1/payments",
+			url: global_url + "/v1/payments",
 			data: payment,
 			type: "POST",
 			xhrFields: {
 				withCredentials: true
 			},
-			success: function(response){
-		        //console.log(response);
+			success: function(response) {
+				//console.log(response);
 				alert("payment successful");
 				window.location.replace("index.html");
 			},
-			error: function(message){
+			error: function(message) {
 				$(".alert").css("display", "block");
 				var parsedResponse = $.parseJSON(message.responseText);
 				$(".alert").html(parsedResponse.error.message);
 			}
 		});
 	});
-	
+
 	var allPayments;
-	
+
 	$.ajax({
 		async: false,
-		url: global_url+"/v1/payments",
+		url: global_url + "/v1/payments",
 		type: "GET",
 		xhrFields: {
 			withCredentials: true
 		},
-		success: function(response){
+		success: function(response) {
 			allPayments = response;
 		},
-		error: function(message){
+		error: function(message) {
 			var parsedResponse = $.parseJSON(message);
-	        alert(response);
+			alert(response);
 		}
 	});
-	
+
 
 	// Populate payment view table.
 	var paymentNum = allPayments.count;
@@ -133,21 +145,16 @@ $(document).ready(function() {
 		id = paymentData[counter].id;
 		// pay close attention to the use of escape characters.
 		if (paid == "false") {
-			$('tbody', '#viewPayments').append(					
-				'<tr><td><a onclick="toPaymentPage(\''+id+'\');">'+id+'</a></td><td class="center">'+amount+'</td><td class="center">'+currency+'</td><td class="center">'+date+'</td><td class="center"><span class="label label-warning">'+paid+'</span></td></tr>'
-			);
-		}
-		else {
-			$('tbody', '#viewPayments').append(					
-				'<tr><td><a onclick="toPaymentPage(\''+id+'\');">'+id+'</a></td><td class="center">'+amount+'</td><td class="center">'+currency+'</td><td class="center">'+date+'</td><td class="center"><span class="label label-success">'+paid+'</span></td></tr>'
-			);
+			$('tbody', '#viewPayments').append('<tr><td><a onclick="toPaymentPage(\'' + id + '\');">' + id + '</a></td><td class="center">' + amount + '</td><td class="center">' + currency + '</td><td class="center">' + date + '</td><td class="center"><span class="label label-warning">' + paid + '</span></td></tr>');
+		} else {
+			$('tbody', '#viewPayments').append('<tr><td><a onclick="toPaymentPage(\'' + id + '\');">' + id + '</a></td><td class="center">' + amount + '</td><td class="center">' + currency + '</td><td class="center">' + date + '</td><td class="center"><span class="label label-success">' + paid + '</span></td></tr>');
 		}
 		counter++;
 	}
 
-       $('input#cardNumber').payment('formatCardNumber');
-       $('input#expiry').payment('formatCardExpiry');
-       $('input#cvv').payment('formatCardCVC');
+	$('input#cardNumber').payment('formatCardNumber');
+	$('input#expiry').payment('formatCardExpiry');
+	$('input#cvv').payment('formatCardCVC');
 
 	/*
 	* ------------------------------------------------------------
@@ -155,41 +162,40 @@ $(document).ready(function() {
 	* ------------------------------------------------------------
 	*/
 	$.ajax({
-		url: global_url+"/v1/payments/"+sessionStorage.getItem('id'),
+		url: global_url + "/v1/payments/" + sessionStorage.getItem('id'),
 		type: "GET",
 		xhrFields: {
 			withCredentials: true
 		},
-		success: function(response){
-			$("#paymentTitle").html("Payment information for "+id);
-			$("#date").html(response.card.exp_month+'/'+response.card.exp_year);
-			$("#last4").html("Last four digits of card number: "+response.card.last4);
-			if (response.description){
-				$("#description").html("Description: "+response.description);
-			}
-			else {
+		success: function(response) {
+			$("#paymentTitle").html("Payment information for " + id);
+			$("#date").html(response.card.exp_month + '/' + response.card.exp_year);
+			$("#last4").html("Last four digits of card number: " + response.card.last4);
+			if (response.description) {
+				$("#description").html("Description: " + response.description);
+			} else {
 				$("#description").html("No description available");
 			}
 		},
-		error: function(message){
+		error: function(message) {
 			var parsedResponse = $.parseJSON(message.responseText);
 			//console.log(parsedResponse.error.message);
 		}
 	});
-	
+
 	/*
 	* ------------------------------------------------------------
 	* ------------- CUSTOMERS-------------------------------------
 	* ------------------------------------------------------------
 	*/
-	
+
 	/*
 	* ------------------------------------------------------------
 	* ------------- CREATE CUSOMERS ------------------------------
 	* ------------------------------------------------------------
 	*/
-	$("#customerSubmit").click(function(){
-				
+	$("#customerSubmit").click(function() {
+
 		// first part is error checking.
 		var name = $("#name").val();
 		var email = $("#email").val();
@@ -198,32 +204,42 @@ $(document).ready(function() {
 		var exp_m = $("#m").val();
 		var exp_y = $("#y").val();
 		var c = $("#c").val();
-				
+
 		// check credit card
 		/* IMPLEMENT THIS LATER */
 
 		// send data to server.
-		var customer = {"email": email, "name": name, "description": desc, "card":{"number": num, "exp_month": exp_m, "exp_year": exp_y, "cvv": c}};
+		var customer = {
+			"email": email,
+			"name": name,
+			"description": desc,
+			"card": {
+				"number": num,
+				"exp_month": exp_m,
+				"exp_year": exp_y,
+				"cvv": c
+			}
+		};
 		$.ajax({
-			url: global_url+"/v1/customers",
+			url: global_url + "/v1/customers",
 			data: customer,
 			type: "POST",
 			xhrFields: {
 				withCredentials: true
 			},
-			success: function(response){
-		        //console.log(response);
+			success: function(response) {
+				//console.log(response);
 				alert("customer created");
 				window.location.replace("customers.html");
 			},
-			error: function(message){
+			error: function(message) {
 				$(".alert").css("display", "block");
 				var parsedResponse = $.parseJSON(message.responseText);
 				$(".alert").html(parsedResponse.error.message);
 			}
 		});
 	});
-	
+
 	/*
 	* ------------------------------------------------------------
 	* ------------- POPULATE CUSTOMER PAGE -----------------------
@@ -232,93 +248,91 @@ $(document).ready(function() {
 	var allCustomers;
 	$.ajax({
 		async: false,
-		url: global_url+"/v1/customers",
+		url: global_url + "/v1/customers",
 		type: "GET",
 		xhrFields: {
 			withCredentials: true
 		},
-		success: function(response){
+		success: function(response) {
 			allCustomers = response;
 		},
-		error: function(message){
+		error: function(message) {
 			var parsedResponse = $.parseJSON(message);
-	        alert(response);
+			alert(response);
 		}
 	});
-	
+
 	var count = allCustomers.count;
 	var i = 0;
 	if (count > 0) {
 		var id = allCustomers.data[0].id;
 		var email = allCustomers.data[0].email;
 		while (i < count) {
-			$('tbody', '#viewCustomers').append(					
-				'<tr><td><a onclick="toCustomerPage(\''+id+'\');">'+id+'</a></td><td class="center">'+email+'</td></tr>'
-			);
+			$('tbody', '#viewCustomers').append('<tr><td><a onclick="toCustomerPage(\'' + id + '\');">' + id + '</a></td><td class="center">' + email + '</td></tr>');
 			i++;
 		}
 	}
 
-	
 	/*
 	* ------------------------------------------------------------
 	* ------------- Populate Single Customer Page-----------------
 	* ------------------------------------------------------------
 	*/
 	$.ajax({
-		url: global_url+"/v1/customers/"+sessionStorage.getItem('id'),
+		url: global_url + "/v1/customers/" + sessionStorage.getItem('id'),
 		type: "GET",
 		xhrFields: {
 			withCredentials: true
 		},
-		success: function(response){
+		success: function(response) {
 			// customer section
-			$("#customerTitle").html("Customer information for "+id);
-			$("#name").html("Name: "+response.name);
-			$("#email").html("Email: "+response.email);
-			$("#created").html("Created: "+response.created);
-			
+			$("#customerTitle").html("Customer information for " + id);
+			$("#name").html("Name: " + response.name);
+			$("#email").html("Email: " + response.email);
+			$("#created").html("Created: " + response.created);
+
 			//card section
-			$("#date").html(response.card.exp_month+'/'+response.card.exp_year);
-			$("#last4").html("Last four digits of card number: "+response.card.last4);
-			if (response.description){
-				$("#description").html("Description: "+response.description);
-			}
-			else {
+			$("#date").html(response.card.exp_month + '/' + response.card.exp_year);
+			$("#last4").html("Last four digits of card number: " + response.card.last4);
+			if (response.description) {
+				$("#description").html("Description: " + response.description);
+			} else {
 				$("#description").html("No description available");
 			}
 		},
-		error: function(message){
+		error: function(message) {
 			var parsedResponse = $.parseJSON(message.responseText);
 			//console.log(parsedResponse.error.message);
 		}
 	});
-	
+
 });
 
 
 /* Logout user */
-function logout(){
-	$.getScript("js/cookies/jquery.cookie.js", function(){
+
+function logout() {
+	$.getScript("js/cookies/jquery.cookie.js", function() {
 		// remove tajer token from cookie
-    	$.removeCookie('tajer_token');	
+		$.removeCookie('tajer_token');
 
 		// redirect to login page.
-		window.location.replace("login.html");	
+		window.location.replace("login.html");
 	});
 }
 
 // Redirect to specific payment page to show more information.
-function toPaymentPage(id){
+
+
+function toPaymentPage(id) {
 	sessionStorage.setItem('id', id);
 	window.location.replace("payment.html");
 }
 
 // Redirect to customer page.
-function toCustomerPage(id){
+
+
+function toCustomerPage(id) {
 	sessionStorage.setItem('id', id);
 	window.location.replace("customer.html");
 }
-
-
-
