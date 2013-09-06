@@ -98,6 +98,7 @@ $(document).ready(function() {
     });
 
   function view_payments() {
+    console.log("HELLO");
   var allPayments;
 
   $.ajax({
