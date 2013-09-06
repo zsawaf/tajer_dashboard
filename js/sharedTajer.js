@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 	var global_url = "http://api.gettajer.com";
+	alert(global_url + " inside shared");
 	//var global_url = "http://api.lvh.me:3000"
 	// Clear alert box.
 	// $(".alert").css("display", "none");

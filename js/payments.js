@@ -1,17 +1,9 @@
 $(document).ready(function() {
 
+	alert(global_url);
+	
 	// initialize variables to store information.
 	var payments;
-
-	alert(global_url);
-	/*
-	* SET UP AJAX CSRF TOKENS
-	*/
-	$.ajaxSetup({
-		beforeSend: function(xhr) {
-			xhr.setRequestHeader('Authorization', "Basic " + token);
-		}
-	});
 
 	/*
 	* ------------------------------------------------------------
