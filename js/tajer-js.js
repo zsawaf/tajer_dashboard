@@ -97,8 +97,6 @@ $(document).ready(function() {
       });
     });
 
-  function view_payments() {
-    console.log("HELLO");
   var allPayments;
 
   $.ajax({
@@ -142,7 +140,6 @@ $(document).ready(function() {
       $('tbody', '#viewPayments').append('<tr><td><a onclick="toPaymentPage(\'' + id + '\');">' + id + '</a></td><td class="center">' + amount + '</td><td class="center">' + currency + '</td><td class="center">' + date + '</td><td class="center"><span class="label label-success">' + paid + '</span></td></tr>');
     }
     counter++;
-  }
   }
 
   $('input#cardNumber').payment('formatCardNumber');
