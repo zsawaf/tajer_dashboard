@@ -1,13 +1,14 @@
 var global_url = "http://api.gettajer.com";
 //var global_url = "http://api.lvh.me:3000"
 
+var token = $.cookie("tajer_token");
+
 
 $(document).ready(function() {
 
 	// Clear alert box.
 	// $(".alert").css("display", "none");
 	// retrieve session token.
-	var token = $.cookie("tajer_token");
 
 	// alert("token: "+token);
 	if (!token) {
