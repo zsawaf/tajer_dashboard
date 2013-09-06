@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	alert(global_url);
+	alert(token);
 	
 	// initialize variables to store information.
 	var payments;
