@@ -1,6 +1,4 @@
 $(document).ready(function() {
-
-	alert(token);
 	
 	// initialize variables to store information.
 	var payments;
